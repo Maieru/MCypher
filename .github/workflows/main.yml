@@ -37,6 +37,9 @@ jobs:
       - name: Mac Workload
         run: dotnet workload install maui-ios
 
+      - name: Mac Catalyst Workload
+        run: dotnet workload install maui-maccatalyst
+
       - name: Build
         run: dotnet build ./MCypher.sln
 
