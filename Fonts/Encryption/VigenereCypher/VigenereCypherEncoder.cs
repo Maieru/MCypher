@@ -17,7 +17,7 @@ namespace Encryption.VigenereCypher
 
         public string Encode(string plainText)
         {
-            EncryptionTextValidationHelper.ValidateText(plainText, "Encoded text");
+            EncryptionTextValidationHelper.ValidateText(plainText, "Plain text");
 
             var keyIndex = 0;
             var returnString = "";

@@ -46,7 +46,7 @@ namespace TestSuit.Vigenere
         [InlineData(null)]
         [InlineData("")]
         [InlineData(" ")]
-        public void Encode_WhenCalledWithInvalidPlainText_ThrowsArgumentException(string plainText)
+        public void Decode_WhenCalledWithInvalidPlainText_ThrowsArgumentException(string plainText)
         {
             var encoder = new VigenereCypherDecoder("validkey");
             Assert.Throws<ArgumentException>(() => encoder.Decode(plainText));
@@ -56,7 +56,7 @@ namespace TestSuit.Vigenere
         [InlineData("123")]
         [InlineData("!@#")]
         [InlineData("abc123")]
-        public void Encode_WhenCalledWithNonLetterPlainText_ThrowsArgumentException(string plainText)
+        public void Decode_WhenCalledWithNonLetterPlainText_ThrowsArgumentException(string plainText)
         {
             var encoder = new VigenereCypherDecoder("validkey");
             Assert.Throws<ArgumentException>(() => encoder.Decode(plainText));

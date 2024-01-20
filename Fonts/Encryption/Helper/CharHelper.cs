@@ -12,7 +12,7 @@ namespace Encryption.Helper
         private const char LAST_CHAR = 'z';
 
         public static int GetCharIndex(char c) => c - FIRST_CHAR;
-        
+
         public static char AddCharIndex(char c, int index)
         {
             var newIndex = c + index;
@@ -31,6 +31,23 @@ namespace Encryption.Helper
                 newIndex += 26;
 
             return (char)newIndex;
+        }
+
+        public static List<int> GetCharOrder(string text)
+        {
+            var tuples = text.Select((c, i) => Tuple.Create(c, i)).OrderBy(t => t.Item1).ToList();
+
+
+            var returnList = new List<int>();
+
+            for (var i = 0; i < text.Length; i++)
+            {
+                var tuple = tuples.Find(t => t.Item2 == i);
+                var tupleIndex = tuples.IndexOf(tuple);
+                returnList.Add(tupleIndex);
+            }
+
+            return returnList;
         }
     }
 }

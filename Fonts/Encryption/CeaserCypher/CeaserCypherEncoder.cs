@@ -16,7 +16,7 @@ namespace Encryption.CeaserCypher
 
         public string Encode(string plainText)
         {
-            EncryptionTextValidationHelper.ValidateText(plainText, "Encoded text");
+            EncryptionTextValidationHelper.ValidateText(plainText, "Plain text");
 
             var returnString = "";
 
