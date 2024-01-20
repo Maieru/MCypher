@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MCypherMaui.MainPage">
+    <ScrollView>
+
+        <VerticalStackLayout
+            Padding="30,0"
+            Spacing="25">
+            <Label Text="Palavra chave:" />
+            <Entry 
+                Placeholder="Palavra-Chave"
+                IsPassword="True"
+                ClearButtonVisibility="Never"
+                Text="{Binding Key}"></Entry>
+
+            <Label Text="Conteudo" />
+            <Entry 
+                Placeholder="Conteudo"
+                IsPassword="False"
+                ClearButtonVisibility="Never"
+                Text="{Binding PlainText}"></Entry>
+            
+            <HorizontalStackLayout>
+                <Label 
+                    Text="Utiliza Data Atual" 
+                    Margin="12" />
+                
+                <Switch 
+                    IsToggled="{Binding UseDate}"/>
+            </HorizontalStackLayout>
+
+            <Button Text="Encriptar" Margin="10" Clicked="OnEncryptClicked"/>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
