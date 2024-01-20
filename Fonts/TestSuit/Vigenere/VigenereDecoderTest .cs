@@ -16,7 +16,7 @@ namespace TestSuit.Vigenere
         [InlineData("KEY", "DlGc Mq k XcCx", "ThIs Is a TeSt")]
         [InlineData("a", "this is a test", "this is a test")]
         [InlineData("This is a very long key with more characters than the text", "moqk qk a oijr", "this is a test")]
-        public void Encode_GivenPlainText_ReturnsEncodedText(string key, string encodedText, string expectedResult)
+        public void Decode_GivenPlainText_ReturnsDecodedText(string key, string encodedText, string expectedResult)
         {
             var encoder = new VigenereCypherDecoder(key);
             var result = encoder.Decode(encodedText);

@@ -6,19 +6,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Encryption.VigenereCypher
+namespace Encryption.CeaserCypher
 {
-    public class VigenereCypherDecoder : CoderWithKey, IDecoder
+    public class CeaserCypherDecoder : IDecoder
     {
-        public VigenereCypherDecoder(string key) : base(key)
-        {
-        }
+        private readonly int _shift;
+
+        public CeaserCypherDecoder(int shift) => _shift = shift;
 
         public string Decode(string encodedText)
         {
             EncryptionTextValidationHelper.ValidateText(encodedText, "Encoded text");
 
-            var keyIndex = 0;
             var returnString = "";
 
             foreach (var c in encodedText)
@@ -35,23 +34,26 @@ namespace Encryption.VigenereCypher
                     continue;
                 }
 
-                var keyChar = GetNextKeyChar(keyIndex);
-                var decodedChar = DecodeChar(decodingChar, keyChar);
+                var decodedChar = DecodeChar(decodingChar);
 
                 if (isCapitalLetter)
                     decodedChar = char.ToUpper(decodedChar);
 
                 returnString += decodedChar;
-                keyIndex++;
             }
 
             return returnString;
         }
 
-        private char DecodeChar(char c, char keyChar)
+        private char DecodeChar(char decodingChar)
         {
-            var keyCharIndex = CharHelper.GetCharIndex(keyChar);
-            return CharHelper.SubtractCharIndex(c, keyCharIndex);
+            if (_shift == 0)
+                return decodingChar;
+
+            if (_shift > 0)
+                return CharHelper.SubtractCharIndex(decodingChar, _shift);
+
+            return CharHelper.AddCharIndex(decodingChar, Math.Abs(_shift));
         }
     }
 }

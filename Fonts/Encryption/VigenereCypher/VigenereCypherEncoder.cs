@@ -11,15 +11,13 @@ namespace Encryption.VigenereCypher
 {
     public sealed class VigenereCypherEncoder : CoderWithKey, IEncoder
     {
-        private string Key { get; set; }
-
         public VigenereCypherEncoder(string key) : base(key)
         {
         }
 
         public string Encode(string plainText)
         {
-            ValidateText(plainText, "Plain text");
+            EncryptionTextValidationHelper.ValidateText(plainText, "Encoded text");
 
             var keyIndex = 0;
             var returnString = "";
@@ -54,12 +52,7 @@ namespace Encryption.VigenereCypher
         private char EncodeChar(char c, char keyChar)
         {
             var keyCharIndex = CharHelper.GetCharIndex(keyChar);
-            var encodedCharIndex = (int)c + keyCharIndex;
-
-            if (encodedCharIndex > 'z')
-                encodedCharIndex -= 26;
-
-            return (char)encodedCharIndex;
+            return CharHelper.AddCharIndex(c, keyCharIndex);
         }
     }
 }
