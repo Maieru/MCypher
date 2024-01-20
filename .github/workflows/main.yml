@@ -5,7 +5,7 @@ env:
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "master" ]
   workflow_dispatch:
 
 permissions:
@@ -31,8 +31,11 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-nuget-
 
-      - name: Workload
+      - name: Android Workload
         run: dotnet workload install maui-android
+
+      - name: Mac Workload
+        run: dotnet workload install maui-ios
 
       - name: Build
         run: dotnet build ./MCypher.sln
