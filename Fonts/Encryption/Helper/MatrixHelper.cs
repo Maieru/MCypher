@@ -36,5 +36,21 @@ namespace Encryption.Helper
 
             return returnString;
         }
+
+        public static string ReadMatrixByRows(char[,] matrix)
+        {
+            var returnString = string.Empty;
+
+            foreach (var row in Enumerable.Range(0, matrix.GetLength(1)))
+            {
+                foreach (var column in Enumerable.Range(0, matrix.GetLength(0)))
+                {
+                    if (matrix[column, row] != FILLING_CHAR)
+                        returnString += matrix[column, row];
+                }
+            }
+
+            return returnString;
+        }
     }
 }

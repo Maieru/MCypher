@@ -25,7 +25,7 @@ namespace TestSuit.Ceaser
         [InlineData(-12, "This is a full text i hope it works", "Hvwg wg o tizz hslh w vcds wh kcfyg")]
         [InlineData(0, "abc", "abc")]
         [InlineData(0, "xyz", "xyz")]
-        public void Encode_GivenPlainText_ReturnsEncodedText(int shift, string plainText, string expectedResult)
+        public void Decode_GivenPlainText_ReturnsDecodedText(int shift, string plainText, string expectedResult)
         {
             var encoder = new CeaserCypherEncoder(shift);
             var result = encoder.Encode(plainText);
