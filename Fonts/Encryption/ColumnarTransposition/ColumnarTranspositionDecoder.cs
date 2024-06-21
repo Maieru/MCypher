@@ -43,6 +43,9 @@ namespace Encryption.ColumnarTransposition
             {
                 foreach (var row in Enumerable.Range(0, numberOfRows))
                 {
+                    if (remainingText.Length == 0)
+                        break;
+
                     if (row == 0)
                     {
                         matrix[column, row] = remainingText[0];
@@ -53,7 +56,7 @@ namespace Encryption.ColumnarTransposition
                     // This is a tricky one: Think like each iteration the number ask "Does the remaining text have
                     // enough characters to fill the rest of the column of the rows above me?"
 
-                    if (remainingText.Length != 0 && remainingText.Length > row * (numberOfColumns - column - 1))
+                    if (remainingText.Length > row * (numberOfColumns - column - 1))
                     {
                         matrix[column, row] = remainingText[0];
                         remainingText = remainingText.Remove(0, 1);

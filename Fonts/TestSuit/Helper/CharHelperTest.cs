@@ -65,6 +65,7 @@ namespace TestSuit.Helper
         [InlineData("ey", new int[] { 0, 1 })]
         [InlineData("azbycx", new int[] { 0, 5, 1, 4, 2, 3 })]
         [InlineData("thisisaverylongtext", new int[] { 13, 4, 5, 11, 6, 12, 0, 16, 1, 10, 18, 7, 9, 8, 3, 14, 2, 17, 15 })]
+        [InlineData("MYKEYISMUCHLONGERTHANMYTEXT", new int[] { 11, 24, 9, 2, 25, 8, 18, 12, 22, 1, 6, 10, 16, 14, 5, 3, 17, 19, 7, 0, 15, 13, 26, 20, 4, 23, 21 })]
         [InlineData("THISISAMUCHLONGERTEXTWITHALOTOFTEXT", new int[] { 24, 8, 11, 22, 12, 23, 0, 16, 31, 2, 9, 14, 18, 17, 7, 3, 21, 25, 4, 33, 26, 32, 13, 27, 10, 1, 15, 19, 28, 20, 6, 29, 5, 34, 30 })]
         public void GetCharOrder_GivenValidText_ReturnOrder(string text, int[] expectedResult)
         {
