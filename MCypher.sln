@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MCypherMaui", "Fonts\MCyphe
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Encryption", "Fonts\Encryption\Encryption.csproj", "{E45D5030-4D6E-4CA4-AE1A-B90F6F0D64F3}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestSuit", "Fonts\TestSuit\TestSuit.csproj", "{917E51AE-3E8A-4966-9B76-3A3A86459A10}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestSuite", "Fonts\TestSuit\TestSuite.csproj", "{917E51AE-3E8A-4966-9B76-3A3A86459A10}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MCypherWeb", "Fonts\MCypherWeb\MCypherWeb.csproj", "{5BA82573-5E8C-4BF4-9217-697AA91F5E7A}"
 EndProject
