@@ -9,7 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Fonts\Encryption\Encryption.csproj" />
+    <ProjectReference Include="..\Encryption\Encryption.csproj" />
   </ItemGroup>
 
 </Project>
