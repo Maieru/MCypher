@@ -1,7 +1,14 @@
+using Database.Context;
+using Database.Repository;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddDbContext<DatabaseContext>(options => options.UseSqlServer(@"data source=localhost\SQLEXPRESS;initial catalog=CursoTeste;trusted_connection=true;TrustServerCertificate=True"), ServiceLifetime.Scoped);
+builder.Services.AddScoped<EncryptionResultRepository>();
 
 var app = builder.Build();
 

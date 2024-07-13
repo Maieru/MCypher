@@ -1,3 +1,5 @@
+using Database.Entities;
+using Database.Repository;
 using Encryption.CeaserCypher;
 using Encryption.VigenereCypher;
 using MCypherWeb.Models;
@@ -9,10 +11,12 @@ namespace MCypherWeb.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly EncryptionResultRepository _encryptionResultRepository;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, EncryptionResultRepository encryptionResultRepository)
         {
             _logger = logger;
+            _encryptionResultRepository = encryptionResultRepository;
         }
 
         public IActionResult Index()
@@ -21,7 +25,7 @@ namespace MCypherWeb.Controllers
         }
 
         [HttpPost]
-        public IActionResult Encrypt(EncryptionViewModel model)
+        public async Task<IActionResult> Encrypt(EncryptionViewModel model)
         {
             if (!ModelState.IsValid)
                 return View("Index", model);
@@ -38,6 +42,16 @@ namespace MCypherWeb.Controllers
                     model.CipherText = vigenereCipher.Encode(model.PlainText);
                     break;
             }
+
+            await _encryptionResultRepository.AddAsync(new EncryptionResultModel()
+            {
+                Created = DateTime.Now,
+                DecryptedText = model.PlainText,
+                EncryptedText = model.CipherText,
+                Key = model.Key
+            });
+
+            await _encryptionResultRepository.SaveAsync();
 
             return View("Index", model);
         }
