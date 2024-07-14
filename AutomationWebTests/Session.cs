@@ -22,8 +22,12 @@ namespace AutomationWebTests
         [TearDown]
         public void TearDown()
         {
-            WebDriver.Quit();
-        }
+			if (WebDriver != null)
+			{
+				WebDriver.Quit();
+				WebDriver.Dispose();
+			}
+		}
 
         private WebDriver GetChromeDriver()
         {
